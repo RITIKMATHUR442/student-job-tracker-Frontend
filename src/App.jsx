@@ -17,7 +17,7 @@ const App = () => {
   const [filterDate, setFilterDate] = useState("");
 
   const fetchJobs = async () => {
-    const res = await axios.get("http://localhost:5000/api/jobs");
+    const res = await axios.get("https://student-job-tracker-backend-zwry.onrender.com/api/jobs?date=2025-04-09/api/jobs");
     setJobs(res.data);
   };
 
@@ -32,10 +32,10 @@ const App = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (editingId) {
-      await axios.put(`http://localhost:5000/api/jobs/${editingId}`, form);
+      await axios.put(`https://student-job-tracker-backend-zwry.onrender.com/api/jobs?date=2025-04-09/api/jobs/${editingId}`, form);
       setEditingId(null);
     } else {
-      await axios.post("http://localhost:5000/api/jobs", form);
+      await axios.post("https://student-job-tracker-backend-zwry.onrender.com/api/jobs?date=2025-04-09/api/jobs", form);
     }
     setForm({ company: "", role: "", status: "Applied", dateOfApplication: "", link: "" });
     fetchJobs();
@@ -47,7 +47,7 @@ const App = () => {
   };
 
   const handleDelete = async (id) => {
-    await axios.delete(`http://localhost:5000/api/jobs/${id}`);
+    await axios.delete(`https://student-job-tracker-backend-zwry.onrender.com/api/jobs?date=2025-04-09/api/jobs/${id}`);
     fetchJobs();
   };
 
