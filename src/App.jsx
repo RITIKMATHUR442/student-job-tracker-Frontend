@@ -15,13 +15,13 @@ const App = () => {
   const [filterStatus, setFilterStatus] = useState("All");
   const [filterDate, setFilterDate] = useState("");
 
-  const [loading, setLoading] = useState(false); // ✅ Loader state
+  const [loading, setLoading] = useState(false); 
 
   const fetchJobs = async () => {
-    setLoading(true); // ✅ Show loader
+    setLoading(true); 
     const res = await axios.get("https://student-job-tracker-backend-zwry.onrender.com/api/jobs");
     setJobs(res.data);
-    setLoading(false); // ✅ Hide loader
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -34,7 +34,7 @@ const App = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true); // ✅ Show loader
+    setLoading(true);
     if (editingId) {
       await axios.put(`https://student-job-tracker-backend-zwry.onrender.com/api/jobs/${editingId}`, form);
       setEditingId(null);
@@ -43,8 +43,7 @@ const App = () => {
     }
     setForm({ company: "", role: "", status: "Applied", dateOfApplication: "", link: "" });
     await fetchJobs();
-    setLoading(false); // ✅ Hide loader
-  };
+    setLoading(false); 
 
   const handleEdit = (job) => {
     const formattedDate = job.dateOfApplication?.split("T")[0];
@@ -56,10 +55,10 @@ const App = () => {
   };
 
   const handleDelete = async (id) => {
-    setLoading(true); // ✅ Show loader
+    setLoading(true); 
     await axios.delete(`https://student-job-tracker-backend-zwry.onrender.com/api/jobs/${id}`);
     await fetchJobs();
-    setLoading(false); // ✅ Hide loader
+    setLoading(false);
   };
 
   const filteredJobs = jobs.filter((job) => {
@@ -106,7 +105,7 @@ const App = () => {
         <button className="submit-btn">{editingId ? "Update" : "Add Job"}</button>
       </form>
 
-      {/* ✅ Loader UI */}
+     
       {loading && (
         <div className="loader">⏳ Processing...</div>
       )}
