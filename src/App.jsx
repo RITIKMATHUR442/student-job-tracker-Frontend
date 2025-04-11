@@ -17,7 +17,8 @@ const App = () => {
   const [filterDate, setFilterDate] = useState("");
 
   const fetchJobs = async () => {
-    const res = await axios.get("https://student-job-tracker-backend-zwry.onrender.com/api/jobs?date=2025-04-09/api/jobs");
+    const res = await axios.get("https://student-job-tracker-backend-zwry.onrender.com/api/jobs");
+
     setJobs(res.data);
   };
 
